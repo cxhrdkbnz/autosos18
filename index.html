@@ -219,16 +219,6 @@
             padding: 60px 0;
         }
 
-        #order {
-            padding: 50px 0;
-            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-            border-top: 1px solid rgba(255, 107, 0, 0.15);
-            border-bottom: 1px solid rgba(255, 107, 0, 0.15);
-        }
-
-        #order h2 {
-            margin-bottom: 1.5rem;
-        }
 
         /* Services Section */
         .services-grid {
@@ -301,39 +291,6 @@
             font-size: 0.95rem;
         }
 
-        /* Form Section */
-        .order-form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: var(--bg-card);
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 20px rgba(255, 107, 0, 0.1);
-        }
-
-        .order-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .form-input {
-            background-color: #1E1E1E;
-            color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            padding: 14px;
-            font-size: 1rem;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.3s;
-            width: 100%;
-        }
-
-        .form-input:focus {
-            border-color: var(--primary);
-        }
 
         /* Photo Gallery */
         .photo-gallery {
@@ -713,18 +670,6 @@
         </div>
     </section>
 
-    <section id="order" class="container animate-up">
-        <h2 style="text-align: center;">Оставить <span class="highlight">заявку</span></h2>
-        <div class="order-form-container">
-            <form class="order-form" id="contact-form" action="https://formspree.io/f/xdayednv" method="POST">
-                <!-- Honeypot Anti-Spam -->
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-                <input type="text" name="Имя" class="form-input" placeholder="Ваше имя" required>
-                <input type="tel" name="Телефон" class="form-input" placeholder="Номер телефона" required>
-                <button type="submit" class="btn">Отправить заявку</button>
-            </form>
-        </div>
-    </section>
 
     <section id="photos" class="container animate-up">
         <h2 style="text-align: center;">Наши <span class="highlight">фото</span></h2>
@@ -785,40 +730,6 @@
     </a>
 
     <script>
-        // Обработка отправки формы
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function (e) {
-                e.preventDefault();
-
-                const btn = this.querySelector('button[type="submit"]');
-                const originalText = btn.innerText;
-                btn.innerText = 'Отправка...';
-                btn.disabled = true;
-
-                try {
-                    const response = await fetch(this.action, {
-                        method: 'POST',
-                        body: new FormData(this),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-                        this.reset();
-                    } else {
-                        alert('Ошибка при отправке. Пожалуйста, попробуйте позвонить.');
-                    }
-                } catch (error) {
-                    alert('Ошибка сети. Пожалуйста, попробуйте позвонить.');
-                } finally {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                }
-            });
-        }
 
         // Простая анимация появления элементов при прокрутке
         document.addEventListener("DOMContentLoaded", function () {
